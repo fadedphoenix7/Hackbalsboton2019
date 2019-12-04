@@ -25,7 +25,7 @@ public class UserCRUD {
             transaction.begin();
             manager.persist(user);
             transaction.commit();
-            System.out.printf("se ha añadido con exito");
+            System.out.printf("se ha agregado con exito");
         }
         catch(PersistenceException e) {
             transaction.rollback();
@@ -50,18 +50,20 @@ public class UserCRUD {
     }
     
     public void deleteUser(String email){
-        String delims = "[,]";
-        String[] tokens = email.split(delims);
 
 
-        for(int i = 0; i < tokens.length; i++){
-            User user = getUser(tokens[i]);
+            User user = getUser(email);
+            System.out.println(user);
             EntityManager manager = EMFBootstrapper.openEntityManager();
+            System.out.println("aqui 5");
             EntityTransaction transaction = manager.getTransaction();
             try {
                 transaction.begin();
-                manager.remove(user);
+                System.out.println("aqui 6");
+                //manager.remove(user);
+                manager.remove(manager.contains(user) ? user : manager.merge(user));
                 transaction.commit();
+                System.out.println("aqui 7");
                 System.out.printf("se ha eliminado con exito");
             }
             catch(PersistenceException e) {
@@ -71,7 +73,7 @@ public class UserCRUD {
             finally {
                 manager.close();
             }
-        }
+        
     }
 
 }

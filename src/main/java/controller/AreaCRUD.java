@@ -8,11 +8,13 @@ package controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 import model.crud.HouseCRUD;
 import model.crud.SpacesCRUD;
 import model.schemas.Area;
 import view.setupAreas;
+import model.bootstraper.EMFBootstrapper;
 
 /**
  *
@@ -30,7 +32,8 @@ public class AreaCRUD {
     }
     
     public HashMap<String, String> getCurrentAreas(){
-        HouseCRUD houseModel = new HouseCRUD(); 
+        EntityManager manager = EMFBootstrapper.openEntityManager();
+        HouseCRUD houseModel = new HouseCRUD(manager); 
         HashMap<String,String> currentAreas = new HashMap<>();
         
         

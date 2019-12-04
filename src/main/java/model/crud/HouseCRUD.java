@@ -25,10 +25,10 @@ public class HouseCRUD {
     }
 
     public void createHouse(House house){
-        EntityTransaction transaction = manager.getTransaction();
+        EntityTransaction transaction = this.manager.getTransaction();
         try {
             transaction.begin();
-            manager.persist(house);
+            this.manager.persist(house);
             transaction.commit();
             System.out.printf("se ha anadido con exito");
         }
@@ -37,7 +37,7 @@ public class HouseCRUD {
             throw e;
         }
         finally {
-            manager.close();
+            this.manager.close();
         }
     }
     private void clone(House house,House newHouse){

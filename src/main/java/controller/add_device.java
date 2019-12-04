@@ -13,7 +13,9 @@ import view.Devices;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
+import model.bootstraper.EMFBootstrapper;
 
 public class add_device
 {
@@ -90,9 +92,9 @@ public class add_device
    //Descomentar y cambiar strings por favor antes de crear dispositivo
    //ndispositivo.setName(view.getNombre()); //Cambien los metodos que no existen por los String que me deben de enviar desdde el view
    //ndispositivo.setType(view.getTipo()); //Cambien los metodos que no existen por los String que me deben de enviar desdde el view
-
-   DeviceCRUD crudnd = new DeviceCRUD();
-   crudnd.createDevice(ndispositivo);
+    EntityManager manager = EMFBootstrapper.openEntityManager();
+    DeviceCRUD crudnd = new DeviceCRUD(manager);
+    crudnd.createDevice(ndispositivo);
   }
  }
 }

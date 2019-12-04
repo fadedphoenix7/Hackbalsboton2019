@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Login_Controller {
 
-    //Test model connection
+    //Test model connection 
     public static void main(String args[]){
         UserCRUD model = new UserCRUD();
         User user;

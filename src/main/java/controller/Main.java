@@ -11,13 +11,13 @@ import view.*;
  * @author raulrivadeneyra
  */
 public class Main {
-    /*
+    
     private final Devices devicesWindow = new Devices();
     private final Home homeWindow = new Home();
-    private final Login loginWindow = new Login();
+    private final Login loginWindow = new view.Login();
     private final Register registerWindow = new Register();
-    private final setupAreas setupAreasWindow = new setupAreas();
-    private final setupDevices setupDevicesWindow = new setupDevices();
+    private final setupAreas setupAreasWindow = new view.setupAreas();
+    private final setupDevices setupDevicesWindow = new view.setupDevices();
     private final setupRooms setupRoomsWindow = new setupRooms();
 
     public static void main(String args[]){
@@ -39,5 +39,5 @@ public class Main {
     public Login getLoginWindow(){
         return loginWindow;
     }
-    */
+    
 }

@@ -5,10 +5,14 @@ package controller;
 
 import controller.exceptions.EmptyException;
 import model.crud.UserCRUD;
+import model.crud.questionList;
 import model.schemas.User;
+import model.schemas.Security;
 import view.Register;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
@@ -23,12 +27,19 @@ public class add_user
   nuser.setName(view.getNombre());
   nuser.setEmail(view.getCorreo());
   nuser.setPassword(view.getContrasena());
+  nuser.setIdSecurity(view.getIdQuestion());
+  nuser.setAnswer(view.getAnswer());
+     
+     
   
   Map<String, String> data = new HashMap<>();
   data.put("nombre", view.getNombre());
   data.put("correo", view.getCorreo());
   data.put("contrasena", view.getContrasena());
   data.put("conf_contrasena", view.getConfcontrasena());
+  data.put("idQuestion",Integer.toString(view.getIdQuestion()));
+  data.put("Answer", view.getAnswer());
+  
 
   int campos = 0; //Verificacion campos
   int correo = 0; //Verificacion correo
@@ -89,7 +100,7 @@ public class add_user
    if (debounce == 0)
    {
     debounce = 1;
-    JOptionPane.showMessageDialog(null,"Las contraseñas no coinciden");
+    JOptionPane.showMessageDialog(null,"Las contrasenas no coinciden");
    }
   }
       
@@ -100,4 +111,9 @@ public class add_user
    crudnu.createUser(nuser);
   }
  }
+    public ArrayList<Security> getSecurityQuestion(){
+        questionList qL = new questionList();
+        ArrayList <Security> questions = qL.getQuestions();
+        return questions;
+    }
 }       

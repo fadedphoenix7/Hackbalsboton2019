@@ -2,7 +2,7 @@ package model;
 
 import model.bootstraper.EMFBootstrapper;
 import model.crud.HouseCRUD;
-
+import model.crud.DeviceCRUD;
 import javax.persistence.EntityManager;
 
 public final class Model {
@@ -14,7 +14,7 @@ public final class Model {
     }
 
     public static DeviceCRUD startDeviceCRUD(EntityManager manager){
-        HouseCRUD crud = new HouseCRUD(manager);
+        DeviceCRUD crud = new DeviceCRUD(manager);
         return crud;
     }
 }
